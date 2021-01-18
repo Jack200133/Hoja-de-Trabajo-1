@@ -1,10 +1,11 @@
 public interface RadioGeneral {
 
     boolean isON();
-    String encender();
-    String apagar();
-    String incrementar();
-    String disminuir();
-    String asignar();
-    String frecuencia();
+    void encender();
+    void apagar();
+    void incrementar();
+    void disminuir();
+    void asignar(int a);
+    void emisora(int a);
+    void frecuencia();
 }
