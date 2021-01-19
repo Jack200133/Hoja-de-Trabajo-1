@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 public class Radio implements RadioGeneral {
 
@@ -7,6 +7,7 @@ public class Radio implements RadioGeneral {
     private double BtAM[];
     private boolean FM;
     private double posicion;
+    private Scanner scan;
 
     public Radio() {
         status = false;
@@ -14,6 +15,7 @@ public class Radio implements RadioGeneral {
         BtFM = new double[12];
         FM = true;
         posicion = 87.9;
+        scan = new Scanner(System.in);
 
     }
 
@@ -74,21 +76,41 @@ public class Radio implements RadioGeneral {
     }
 
     @Override //se asiga una frecuencia a un boton
-    public void asignar(int a) {
-        if(FM){
-            BtFM[a] = posicion;
-        }else {
-            BtAM[a] = posicion;
+    public void asignar() {
+        try {
+            System.out.println("Ingrese que en que boton se asignara");
+            int a = scan.nextInt();
+            if(FM){
+                BtFM[a] = posicion;
+            }else if(FM = false && a >= 1 && a<= 7){
+                BtAM[a] = posicion;
+            }else{
+                System.out .println("Ingrese un dato entre 1 a 7");
+            }
+        }catch (Exception e){
+            System.out.println("Ingrese un dato numerico");
         }
+
     }
 
     @Override // las frecuencias guardadas son seleccionadas
-    public void emisora(int a) {
-        if(FM){
-            posicion = BtFM[a];
-        }else {
-            posicion = BtAM[a];
+    public void emisora() {
+        try {
+            System.out.println("Ingrese que boton quiere");
+            int a = scan.nextInt();
+            if(FM && a >= 1 && a <=7){
+                posicion = BtFM[a];
+            }else if(FM = false && a >= 1 && a<= 7){
+                posicion = BtAM[a];
+            }else{
+                System.out .println("Ingrese un dato entre 1 a 7");
+            }
         }
+        catch (Exception e){
+            System.out.println("Ingrese un dato numerico");
+        }
+
+
     }
 
     @Override //cambiar de am a fm y vice versa

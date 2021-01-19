@@ -5,7 +5,7 @@ public interface RadioGeneral {
     void apagar();
     void incrementar();
     void disminuir();
-    void asignar(int a);
-    void emisora(int a);
+    void asignar();
+    void emisora();
     void frecuencia();
 }
