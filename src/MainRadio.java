@@ -32,11 +32,45 @@ public class MainRadio {
                             rd.encender();
                         }
                         case 2:{
-
+                            if(rd.isON()){
+                                rd.frecuencia();
+                            }else {
+                                System.out.println("La radio esta apagada");
+                            }
                         }
                         case 3:{
+                            if(rd.isON()){
+                            rd.incrementar();
+                            }else {
+                                System.out.println("La radio esta apagada");
+                            }
 
                         }
+                        case 4:{
+                            try {
+                                System.out.println("Ingrese que en que boton se asignara");
+                                int a = scan.nextInt();
+                                rd.asignar(a);
+                            }catch (Exception e){
+                                System.out.println("Ingrese un dato numerico");
+                            }
+
+
+                        }
+                        case 5: {
+                            try {
+                                System.out.println("Ingrese que boton quiere");
+                                int a = scan.nextInt();
+                                rd.emisora(a);
+                            }catch (Exception e){
+                                System.out.println("Ingrese un dato numerico");
+                            }
+
+                        }
+                        case 6: {
+                            rd.apagar();
+                        }
+
                         case 7:{
                         bandera = false;
                         }

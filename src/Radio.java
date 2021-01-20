@@ -7,7 +7,6 @@ public class Radio implements RadioGeneral {
     private double BtAM[];
     private boolean FM;
     private double posicion;
-    private Scanner scan;
 
     public Radio() {
         status = false;
@@ -15,8 +14,6 @@ public class Radio implements RadioGeneral {
         BtFM = new double[12];
         FM = true;
         posicion = 87.9;
-        scan = new Scanner(System.in);
-
     }
 
     @Override
@@ -55,60 +52,29 @@ public class Radio implements RadioGeneral {
         System.out.println("La nueva posicion de la radio es + " + posicion);
     }
 
-    @Override// a la frecuancia actual se la baja segun si es AM o FM
-    public void disminuir() {
-        if (FM){
-            if (posicion <= 87.9){
-                posicion = 107.9;
-            }else{
-                posicion -= 0.2;
-            }
-        }else {
-            if( posicion <= 530){
-                posicion = 1610;
-            }else {
-                posicion -= 10;
-            }
-
-        }
-        System.out.println("La nueva posicion de la radio es + " + posicion);
-
-    }
 
     @Override //se asiga una frecuencia a un boton
-    public void asignar() {
-        try {
-            System.out.println("Ingrese que en que boton se asignara");
-            int a = scan.nextInt();
+    public boolean asignar(int a) {
             if(FM){
                 BtFM[a] = posicion;
-            }else if(FM = false && a >= 1 && a<= 7){
+                return true;
+            }else  {
                 BtAM[a] = posicion;
-            }else{
-                System.out .println("Ingrese un dato entre 1 a 7");
+                return false;
             }
-        }catch (Exception e){
-            System.out.println("Ingrese un dato numerico");
-        }
 
     }
 
     @Override // las frecuencias guardadas son seleccionadas
-    public void emisora() {
-        try {
-            System.out.println("Ingrese que boton quiere");
-            int a = scan.nextInt();
+    public boolean emisora(int a) {
+
             if(FM && a >= 1 && a <=7){
                 posicion = BtFM[a];
-            }else if(FM = false && a >= 1 && a<= 7){
+                return true;
+            }else {
                 posicion = BtAM[a];
-            }else{
-                System.out .println("Ingrese un dato entre 1 a 7");
+                return false;
             }
-        }
-        catch (Exception e){
-            System.out.println("Ingrese un dato numerico");
-        }
 
 
     }
