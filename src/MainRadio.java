@@ -10,9 +10,9 @@ public class MainRadio {
 
         while (bandera){
             if(rd.isON()){
-                System.out.println("Radio Encendida");
+                System.out.println("\nRadio Encendida");
             }else {
-                System.out.println("Radio Apagada");
+                System.out.println("\nRadio Apagada");
             }
             System.out.println("--------------------\n");
 
@@ -27,52 +27,75 @@ public class MainRadio {
             try {
                 op = scan.nextInt();
                 if (op >=1 && op <=7){
-                    switch (op){
-                        case 1:{
+                    switch (op) {
+                        case 1 -> {
                             rd.encender();
                         }
-                        case 2:{
-                            if(rd.isON()){
+                        case 2 -> {
+                            if (rd.isON()) {
                                 rd.frecuencia();
-                            }else {
-                                System.out.println("La radio esta apagada");
+                            } else {
+                                System.out.println("La radio esta apagada, porfavor prendala");
                             }
                         }
-                        case 3:{
-                            if(rd.isON()){
-                            rd.incrementar();
-                            }else {
-                                System.out.println("La radio esta apagada");
-                            }
-
-                        }
-                        case 4:{
-                            try {
-                                System.out.println("Ingrese que en que boton se asignara");
-                                int a = scan.nextInt();
-                                rd.asignar(a);
-                            }catch (Exception e){
-                                System.out.println("Ingrese un dato numerico");
-                            }
-
-
-                        }
-                        case 5: {
-                            try {
-                                System.out.println("Ingrese que boton quiere");
-                                int a = scan.nextInt();
-                                rd.emisora(a);
-                            }catch (Exception e){
-                                System.out.println("Ingrese un dato numerico");
+                        case 3 -> {
+                            if (rd.isON()) {
+                                rd.incrementar();
+                            } else {
+                                System.out.println("La radio esta apagada, porfavor prendala");
                             }
 
                         }
-                        case 6: {
+                        case 4 -> {
+                            if (rd.isON()) {
+                                while (true){
+                                    try {
+                                        System.out.println("Ingrese que en que boton se asignara de 1 a 12");
+                                        int a = scan.nextInt();
+                                        if(a >= 1 && a <=12){
+                                            rd.asignar(a);
+                                            break;
+                                        }else {
+                                            System.out.println("Ingrese un numero del 1 al 12");
+                                        }
+
+                                    } catch (Exception e) {
+                                        System.out.println("Ingrese un dato numerico");
+                                    }
+                                }
+
+                            } else {
+                                System.out.println("La radio esta apagada, porfavor prendala");
+                            }
+                        }
+                        case 5 -> {
+
+                            if (rd.isON()) {
+                                while (true){
+                                    try {
+                                        System.out.println("Ingrese que boton quiere apachar de 1 a 12");
+                                        int a = scan.nextInt();
+                                        if(a >= 1 && a <=12){
+                                            rd.emisora(a);
+                                            break;
+                                        }else {
+                                            System.out.println("Ingrese un numero del 1 al 12");
+                                        }
+
+                                    } catch (Exception e) {
+                                        System.out.println("Ingrese un dato numerico");
+                                    }
+                                }
+                            } else {
+                                System.out.println("La radio esta apagada, porfavor prendala");
+                            }
+
+                        }
+                        case 6 -> {
                             rd.apagar();
                         }
-
-                        case 7:{
-                        bandera = false;
+                        case 7 -> {
+                            bandera = false;
                         }
                     }
                 }else {

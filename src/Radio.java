@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Radio implements RadioGeneral {
@@ -14,6 +15,8 @@ public class Radio implements RadioGeneral {
         BtFM = new double[12];
         FM = true;
         posicion = 87.9;
+        Arrays.fill(BtAM, 530);
+        Arrays.fill(BtFM, 87.9);
     }
 
     @Override
@@ -47,19 +50,24 @@ public class Radio implements RadioGeneral {
             }else {
                 posicion += 10;
             }
-
         }
-        System.out.println("La nueva posicion de la radio es + " + posicion);
+        if(FM){
+            System.out.println("La nueva posicion de la radio es FM:" + posicion);
+        }else {
+            System.out.println("La nueva posicion de la radio es AM:" + posicion);
+        }
     }
 
 
     @Override //se asiga una frecuencia a un boton
     public boolean asignar(int a) {
             if(FM){
-                BtFM[a] = posicion;
+                BtFM[a-1] = posicion;
+                System.out.println("La frecuencia FM: " + posicion + " se guardo en el boton " + a);
                 return true;
             }else  {
-                BtAM[a] = posicion;
+                BtAM[a-1] = posicion;
+                System.out.println("La frecuencia AM: " + posicion + " se guardo en el boton " + a);
                 return false;
             }
 
@@ -68,11 +76,13 @@ public class Radio implements RadioGeneral {
     @Override // las frecuencias guardadas son seleccionadas
     public boolean emisora(int a) {
 
-            if(FM && a >= 1 && a <=7){
-                posicion = BtFM[a];
+            if(FM){
+                posicion = BtFM[a-1];
+                System.out.println("La frecuencia AM: " + posicion + " se guardo en el boton " + a);
                 return true;
             }else {
-                posicion = BtAM[a];
+                posicion = BtAM[a-1];
+                System.out.println("La frecuencia AM: " + posicion + " se guardo en el boton " + a);
                 return false;
             }
 
@@ -82,5 +92,13 @@ public class Radio implements RadioGeneral {
     @Override //cambiar de am a fm y vice versa
     public void frecuencia() {
         FM = !FM;
+        if(FM){
+            posicion = 89.7;
+            System.out.println("La radio ahora es FM");
+        }else {
+            posicion = 530;
+            System.out.println("La radio ahora es AM");
+        }
+
     }
 }
