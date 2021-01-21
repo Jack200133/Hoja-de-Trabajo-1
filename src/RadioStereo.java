@@ -1,14 +1,25 @@
+/***************************************************************
+ * RadioStereo.java
+ * Autor: Juan Angel Carrera y Jessica Ortiz
+ * Universidad del Valle de Guatemala
+ *
+ * Radio que implementa los metodos de la interfaz para que asi todas
+ * las radios funcionen bajo un mismo main
+ ***************************************************************/
+
 import java.util.Arrays;
 
 
 public class RadioStereo implements Radio {
 
+    //Atributos de la clase
     private boolean status;
     private double BtFM[];
     private double BtAM[];
     private boolean FM;
     private double posicion;
 
+    //constructor de la clase
     public RadioStereo() {
         status = false;
         BtAM = new double[12];
@@ -19,18 +30,18 @@ public class RadioStereo implements Radio {
         Arrays.fill(BtFM, 87.9);
     }
 
-    @Override
+    @Override // comprueba el estado de la radio
     public boolean isON() {
         return status;
     }
 
-    @Override
+    @Override // prende la radio
     public void encender() {
        status = true;
        System.out.println("Se prendio la radio");
     }
 
-    @Override //
+    @Override // apaga la radio
     public void apagar() {
         status = false;
         System.out.println("Se apago la radio");
