@@ -4,7 +4,7 @@ public class MainRadio {
 
     public static void main(String[] args){
         int op = 0;
-        Radio rd = new Radio();
+        RadioStereo rd = new RadioStereo();
         Scanner scan = new Scanner(System.in);
         boolean bandera = true;
 
