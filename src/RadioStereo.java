@@ -10,7 +10,7 @@
 import java.util.Arrays;
 
 
-public class RadioStereo implements Radio {
+public class RadioStereo implements RadioGeneral {
 
     //Atributos de la clase
     private boolean status;
@@ -102,7 +102,7 @@ public class RadioStereo implements Radio {
            return false;
     }
 
-    @Override //cambiar de am a fm y vice versa
+    @Override /** cambiar de am a fm y vice versa*/
     public void frecuencia() {
         FM = !FM;
         if(FM){

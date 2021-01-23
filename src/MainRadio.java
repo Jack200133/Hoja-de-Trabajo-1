@@ -16,7 +16,7 @@ public class MainRadio {
         RadioStereo rd = new RadioStereo();
         Scanner scan = new Scanner(System.in);
         boolean bandera = true;
-        //Ciclo while que le mostara el estado de la radio y el menu al usuario
+        /**Ciclo while que le mostara el estado de la radio y el menu al usuario*/
 
         while (bandera){
             if(rd.isON()){
